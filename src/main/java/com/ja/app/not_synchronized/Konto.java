@@ -18,14 +18,14 @@ class Konto {
         return "Konto nr " + numer + ", saldo: " + saldo + ", wł.: " + wlasciciel;
     }
 
-    public void wplata(int kwota) {
+    public synchronized void wplata(int kwota) {
         if(kwota < 0) {
             throw new IllegalArgumentException("Ujemna kwota " + kwota + " we wpłacie");
         }
         saldo += kwota;
     }
 
-    public void wyplata(int kwota) throws Exception {
+    public synchronized void wyplata(int kwota) throws Exception {
         if(kwota < 0) {
             throw new IllegalArgumentException("Ujemna kwota " + kwota + " w wypłacie");
         }
@@ -35,7 +35,7 @@ class Konto {
         saldo -= kwota;
     }
 
-    public int getSaldo() {
+    public synchronized int getSaldo() {
         return saldo;
     }
 }
