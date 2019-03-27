@@ -3,7 +3,7 @@ package com.ja.app;
 public class SorryImNull {
 
     static private String[] strArr = new String[3];
-    public static void main(String[] args)  {
+    public static void main(String[] args)  throws InterruptedException{
 
         Thread thread1 = new Thread(
                 ()->{
@@ -41,6 +41,8 @@ public class SorryImNull {
         thread1.start();
         thread2.start();
         thread3.start();
+
+        thread3.join();
 
         System.out.println("strArr[0] ="+strArr[0].toString()+" strArr[1] = "+strArr[1].toString()+" strArr[2] = "+strArr[2].toString() );
     }
